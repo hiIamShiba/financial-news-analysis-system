@@ -4,8 +4,11 @@ import os
 import time
 from datetime import datetime, timedelta
 
-# Khởi tạo client Finnhub (cần thay thế bằng API key thực tế)
-finnhub_client = finnhub.Client(api_key="d7nsl9hr01qs975tc1t0d7nsl9hr01qs975tc1tg")
+# Khởi tạo client Finnhub từ biến môi trường
+api_key = os.environ.get("FINNHUB_API_KEY")
+if not api_key:
+    raise ValueError("Thiếu biến môi trường FINNHUB_API_KEY")
+finnhub_client = finnhub.Client(api_key=api_key)
 
 # Khởi tạo danh sách các mã chứng khoán cần lấy tin tức
 tickers_list = [
@@ -27,8 +30,8 @@ tickers_list = [
 ]
 
 # Thiết lập khoảng thời gian lấy tin (Finnhub bắt buộc _from và to)
-date_from_str = "2026-01-01"
-date_to_str = "2026-04-27"
+date_from_str = "2026-04-28"
+date_to_str = "2026-05-05"
 
 start_date_global = datetime.strptime(date_from_str, "%Y-%m-%d")
 end_date_global = datetime.strptime(date_to_str, "%Y-%m-%d")
