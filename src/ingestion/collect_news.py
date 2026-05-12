@@ -3,8 +3,13 @@ import json
 import os
 import time
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 # Khởi tạo client Finnhub từ biến môi trường
+load_dotenv()
 api_key = os.environ.get("FINNHUB_API_KEY")
 if not api_key:
     raise ValueError("Thiếu biến môi trường FINNHUB_API_KEY")
@@ -30,23 +35,23 @@ tickers_list = [
 ]
 
 # Thiết lập khoảng thời gian lấy tin (Finnhub bắt buộc _from và to)
-date_from_str = "2026-04-28"
-date_to_str = "2026-05-05"
+date_from_str = "2026-04-29"
+date_to_str = "2026-05-12"
 
 start_date_global = datetime.strptime(date_from_str, "%Y-%m-%d")
 end_date_global = datetime.strptime(date_to_str, "%Y-%m-%d")
 
 # Đường dẫn file database cục bộ
-db_file = "../../data/raw/bert_news_db.json"
+db_file = (BASE_DIR / "../../data/raw/bert_news_db.json").resolve()
 
 # Tải dữ liệu cũ nếu file đã tồn tại
-if os.path.exists(db_file):
+if db_file.exists() and db_file.stat().st_size > 0:
     with open(db_file, "r", encoding="utf-8") as f:
         unique_articles = json.load(f)
 else:
     # Sử dụng dictionary để lưu trữ và loại bỏ trùng lặp dựa trên ID bài báo
     unique_articles = {}
-    os.makedirs(os.path.dirname(db_file), exist_ok=True)  # Tạo thư mục nếu chưa tồn tại
+    db_file.parent.mkdir(parents=True, exist_ok=True)  # Tạo thư mục nếu chưa tồn tại
 
 for ticker_symbol in tickers_list:
     current_start_date = start_date_global
@@ -68,7 +73,7 @@ for ticker_symbol in tickers_list:
         )
 
         # Tạm dừng để tránh lỗi 429 Too Many Requests từ Finnhub
-        time.sleep(1)
+        time.sleep(3)
 
         # In thông tin các bài báo
         for article in news_data:
@@ -119,6 +124,7 @@ for ticker_symbol in tickers_list:
         current_start_date = current_end_date + timedelta(days=1)
 
 # Lưu lại toàn bộ dữ liệu vào file JSON cục bộ
+print(type(unique_articles))
 with open(db_file, "w", encoding="utf-8") as f:
     json.dump(unique_articles, f, ensure_ascii=False, indent=4)
 
