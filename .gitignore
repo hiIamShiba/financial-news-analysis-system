@@ -218,6 +218,6 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Data
-data/
+chroma_db/
 myenv/
 model/

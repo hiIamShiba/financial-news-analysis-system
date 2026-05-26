@@ -35,7 +35,7 @@ tickers_list = [
 ]
 
 # Thiết lập khoảng thời gian lấy tin (Finnhub bắt buộc _from và to)
-date_from_str = "2026-04-29"
+date_from_str = "2026-01-01"
 date_to_str = "2026-05-12"
 
 start_date_global = datetime.strptime(date_from_str, "%Y-%m-%d")
