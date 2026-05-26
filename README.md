@@ -20,12 +20,12 @@ We constructed a bilingual financial sentiment dataset of ~100,000 samples: ~50,
 
 We fine-tuned and benchmarked multiple pre-trained language models on the bilingual dataset:
 
-| Model                     | Language      | HuggingFace Link                                                                                                                                    |
-| ------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Baseline (BERT)           | EN            | —                                                                                                                                                   |
-| **PhoBERT-VFA**           | 🇻🇳 Vietnamese | [finance-sentiment/phobert-vfa-sentiment](https://huggingface.co/finance-sentiment/phobert-vfa-sentiment)                                           |
-| **RoBERTa**               | 🇺🇸 English    | [finance-sentiment/roberta-financial-sentiment](https://huggingface.co/finance-sentiment/roberta-financial-sentiment)                               |
-| **FinBERT** ✅ (selected) | 🇺🇸 English    | [finance-sentiment/finetuned-FinBERT-sentiment-classification](https://huggingface.co/finance-sentiment/finetuned-FinBERT-sentiment-classification) |
+| Model              | Language                     | Link                                                                                                                                                |
+| ------------------ | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Baseline**       | 🇺🇸 English and 🇻🇳 Vietnamese | [Baseline Notebook](https://github.com/hiIamShiba/financial-news-analysis-system/tree/main/notebooks/Baseline.ipynb)                                |
+| **PhoBERT-VFA** ✅ | 🇻🇳 Vietnamese                | [finance-sentiment/phobert-vfa-sentiment](https://huggingface.co/finance-sentiment/phobert-vfa-sentiment)                                           |
+| **RoBERTa**        | 🇺🇸 English                   | [finance-sentiment/roberta-financial-sentiment](https://huggingface.co/finance-sentiment/roberta-financial-sentiment)                               |
+| **FinBERT** ✅     | 🇺🇸 English                   | [finance-sentiment/finetuned-FinBERT-sentiment-classification](https://huggingface.co/finance-sentiment/finetuned-FinBERT-sentiment-classification) |
 
 After benchmarking, **FinBERT** was selected for English sentiment analysis in production and **PhoBERT-VFA** was selected for Vietnamese.
 
