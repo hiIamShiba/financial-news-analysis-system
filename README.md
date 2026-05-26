@@ -53,16 +53,35 @@ A multi-step agentic workflow was built that:
 
 ```
 .
-├── app.py                  # Streamlit frontend
-├── main_agent.py           # Core agentic analysis orchestrator (13-step LLM pipeline)
-├── sentiment_analyzer.py   # FinBERT/PhoBERT sentiment pipeline
-├── model_manager.py        # Model loader & inference manager
-├── get_stock_price.py      # Real-time stock price via Finnhub API
-├── get_stock_trend.py      # 30-day historical trend via Yahoo Finance
-├── retrieve_database.py    # ChromaDB news retrieval
-├── check_data_type.py      # ChromaDB inspection utility
-├── chroma_db/              # Vector database (news embeddings)
-└── .env                    # API keys (not committed to git)
+├── data/
+│   ├── processed/                  # Processed financial news data
+│   └── raw/                        # Raw financial news data
+├── notebooks/                      # Jupyter notebooks for training & baseline
+│   ├── Baseline.ipynb
+│   ├── FinBERT_train.ipynb
+│   ├── PhoBERT_train.ipynb
+│   └── RoBERTa-base_train.ipynb
+├── src/
+│   ├── app/                        # Main application components
+│   │   ├── .env                    # API keys (not committed to git)
+│   │   ├── app.py                  # Streamlit frontend UI
+│   │   ├── check_data_type.py      # ChromaDB inspection utility
+│   │   ├── get_stock_price.py      # Real-time stock price via Finnhub API
+│   │   ├── get_stock_trend.py      # 30-day historical trend via Yahoo Finance
+│   │   ├── main_agent.py           # Core agentic analysis orchestrator
+│   │   ├── model_manager.py        # Model loader & inference manager
+│   │   ├── requirements.txt        # App-specific dependencies
+│   │   ├── retrieve_database.py    # ChromaDB news retrieval
+│   │   └── sentiment_analyzer.py   # FinBERT/PhoBERT sentiment pipeline
+│   ├── augmentation/               # Data translation & augmentation pipeline
+│   │   ├── translate.py
+│   │   └── source.json
+│   └── ingestion/                  # Data collection & database population
+│       ├── chroma_ingestion.py
+│       ├── collect_news.py
+│       └── sentiment_inference.py
+├── .gitignore
+└── README.md
 ```
 
 ---
