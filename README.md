@@ -20,12 +20,12 @@ We constructed a bilingual financial sentiment dataset of ~100,000 samples: ~50,
 
 We fine-tuned and benchmarked multiple pre-trained language models on the bilingual dataset:
 
-| Model              | Language                     | Link                                                                                                                                                |
-| ------------------ | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Baseline**       | 🇺🇸 English and 🇻🇳 Vietnamese | [Baseline Notebook](https://github.com/hiIamShiba/financial-news-analysis-system/tree/main/notebooks/Baseline.ipynb)                                |
-| **PhoBERT-VFA** ✅ | 🇻🇳 Vietnamese                | [finance-sentiment/phobert-vfa-sentiment](https://huggingface.co/finance-sentiment/phobert-vfa-sentiment)                                           |
-| **RoBERTa**        | 🇺🇸 English                   | [finance-sentiment/roberta-financial-sentiment](https://huggingface.co/finance-sentiment/roberta-financial-sentiment)                               |
-| **FinBERT** ✅     | 🇺🇸 English                   | [finance-sentiment/finetuned-FinBERT-sentiment-classification](https://huggingface.co/finance-sentiment/finetuned-FinBERT-sentiment-classification) |
+| Model          | Language                     | Link                                                                                                                                                |
+| -------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Baseline**   | 🇺🇸 English and 🇻🇳 Vietnamese | [Baseline Notebook](https://github.com/hiIamShiba/financial-news-analysis-system/tree/main/notebooks/Baseline.ipynb)                                |
+| **PhoBERT** ✅ | 🇻🇳 Vietnamese                | [finance-sentiment/phobert-vfa-sentiment](https://huggingface.co/finance-sentiment/phobert-vfa-sentiment)                                           |
+| **RoBERTa**    | 🇺🇸 English                   | [finance-sentiment/roberta-financial-sentiment](https://huggingface.co/finance-sentiment/roberta-financial-sentiment)                               |
+| **FinBERT** ✅ | 🇺🇸 English                   | [finance-sentiment/finetuned-FinBERT-sentiment-classification](https://huggingface.co/finance-sentiment/finetuned-FinBERT-sentiment-classification) |
 
 After benchmarking, **FinBERT** was selected for English sentiment analysis in production and **PhoBERT-VFA** was selected for Vietnamese.
 
@@ -169,7 +169,7 @@ Enter a ticker when prompted (e.g., `AAPL`). The full reasoning and trading bias
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 📦 Bilingual Dataset | [finance-sentiment/financial-phrase-sentiment](https://huggingface.co/datasets/finance-sentiment/financial-phrase-sentiment)                        |
 | 🤗 FinBERT (EN)      | [finance-sentiment/finetuned-FinBERT-sentiment-classification](https://huggingface.co/finance-sentiment/finetuned-FinBERT-sentiment-classification) |
-| 🤗 PhoBERT-VFA (VI)  | [finance-sentiment/phobert-vfa-sentiment](https://huggingface.co/finance-sentiment/phobert-vfa-sentiment)                                           |
+| 🤗 PhoBERT (VI)      | [finance-sentiment/phobert-vfa-sentiment](https://huggingface.co/finance-sentiment/phobert-vfa-sentiment)                                           |
 | 🤗 RoBERTa (EN)      | [finance-sentiment/roberta-financial-sentiment](https://huggingface.co/finance-sentiment/roberta-financial-sentiment)                               |
 | ⚡ Groq API          | [console.groq.com](https://console.groq.com)                                                                                                        |
 | 📈 Finnhub API       | [finnhub.io](https://finnhub.io)                                                                                                                    |
@@ -180,11 +180,11 @@ Enter a ticker when prompted (e.g., `AAPL`). The full reasoning and trading bias
 
 Below is the performance comparison of the fine-tuned models evaluated on our bilingual financial sentiment dataset:
 
-| Model              |   Language    | Accuracy | Recall | Precision | Macro-F1 | Weighted-F1 |
-| :----------------- | :-----------: | :------: | :----: | :-------: | :------: | :---------: |
-| **FinBERT** ✅     |  🇺🇸 English   |  71.64%  | 71.74% |  70.98%   |  71.19%  |   70.98%    |
-| **RoBERTa**        |  🇺🇸 English   |  72.78%  | 71.98% |  72.93%   |  72.08%  |   72.08%    |
-| **PhoBERT-VFA** ✅ | 🇻🇳 Vietnamese |  71.38%  | 71.38% |  71.25%   |  70.34%  |   71.29%    |
+| Model          |   Language    | Accuracy | Recall | Precision | Macro-F1 | Weighted-F1 |
+| :------------- | :-----------: | :------: | :----: | :-------: | :------: | :---------: |
+| **FinBERT** ✅ |  🇺🇸 English   |  71.64%  | 71.74% |  70.98%   |  71.19%  |   70.98%    |
+| **RoBERTa**    |  🇺🇸 English   |  72.78%  | 71.98% |  72.93%   |  72.08%  |   72.08%    |
+| **PhoBERT** ✅ | 🇻🇳 Vietnamese |  71.38%  | 71.38% |  71.25%   |  70.34%  |   71.29%    |
 
 ---
 
